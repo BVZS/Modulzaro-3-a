@@ -35,4 +35,36 @@ public class Vonal {
         this.szin = szin;
         this.stilus = stilus;
     }
+    
+    public void megjelenit() {
+        System.out.println("Vonal{hossz=" + this.hossz + ", eltolas=" + this.eltolas + ", szin=" + this.szin + ", stilus=" + this.stilus + "}");
+        
+        String jel = "";
+        switch(this.stilus) {
+            case DUPLA: jel = "=";
+            case SZIMPLA: jel = "_";
+            case PONT: jel = ".";
+            default: jel = "_";
+        }
+        
+        String szinStr;
+        switch (this.szin) {
+            case PIROS: szinStr = "ANSI_RED";
+            case KEK: szinStr = "ANSI_BLUE";
+            case ZOLD: szinStr = "ANSI_GREEN";
+            default: szinStr = "ANSI_RED";
+        }
+        
+        String str = szinStr + "";
+        if(this.eltolas != 0) {
+            for (int i = 0; i < this.eltolas; i++) {
+                str += " ";
+            }
+        }
+        
+        for (int i = 0; i < this.hossz; i++) {
+            str += jel;
+        }
+        System.out.println(str);
+    }
 }
