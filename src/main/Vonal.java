@@ -36,8 +36,8 @@ public class Vonal {
         this.stilus = stilus;
     }
     
-    public void megjelenit() {
-        System.out.println("Vonal{hossz=" + this.hossz + ", eltolas=" + this.eltolas + ", szin=" + this.szin + ", stilus=" + this.stilus + "}");
+    public String megjelenit() {
+        //System.out.println("Vonal{hossz=" + this.hossz + ", eltolas=" + this.eltolas + ", szin=" + this.szin + ", stilus=" + this.stilus + "}");
         
         String jel = "";
         switch(this.stilus) {
@@ -65,6 +65,6 @@ public class Vonal {
         for (int i = 0; i < this.hossz; i++) {
             str += jel;
         }
-        System.out.println(str);
+        return str;
     }
 }
