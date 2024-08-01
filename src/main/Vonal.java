@@ -26,7 +26,7 @@ public class Vonal {
         this(hossz, eltolas, szin, Stilusok.SZIMPLA);
     }
     
-    public Vonal(int hossz, int elotlas, Szinek szin, Stilusok stilus) throws IllegalArgumentException {
+    public Vonal(int hossz, int eltolas, Szinek szin, Stilusok stilus) throws IllegalArgumentException {
         if (hossz < 1) {
             throw new IllegalArgumentException("Egy vonal nem jött létre, mert nem létező a hossz!");
         }
@@ -37,23 +37,18 @@ public class Vonal {
     }
     
     public String megjelenit() {
-        //System.out.println("Vonal{hossz=" + this.hossz + ", eltolas=" + this.eltolas + ", szin=" + this.szin + ", stilus=" + this.stilus + "}");
+
+        String jel = switch(this.stilus) {
+            case DUPLA -> "=";
+            case SZIMPLA -> "_";
+            case PONT -> ".";
+        };
         
-        String jel = "";
-        switch(this.stilus) {
-            case DUPLA: jel = "=";
-            case SZIMPLA: jel = "_";
-            case PONT: jel = ".";
-            default: jel = "_";
-        }
-        
-        String szinStr;
-        switch (this.szin) {
-            case PIROS: szinStr = "ANSI_RED";
-            case KEK: szinStr = "ANSI_BLUE";
-            case ZOLD: szinStr = "ANSI_GREEN";
-            default: szinStr = "ANSI_RED";
-        }
+        String szinStr = switch(this.szin) {
+            case PIROS -> ANSI_RED;
+            case KEK -> ANSI_BLUE;
+            case ZOLD -> ANSI_GREEN;
+        };
         
         String str = szinStr + "";
         if(this.eltolas != 0) {
@@ -66,5 +61,9 @@ public class Vonal {
             str += jel;
         }
         return str;
+    }
+    
+    public String info() {
+        return "Vonal{hossz=" + this.hossz + ", eltolas=" + this.eltolas + ", szin=" + this.szin + ", stilus=" + this.stilus + "}";
     }
 }
